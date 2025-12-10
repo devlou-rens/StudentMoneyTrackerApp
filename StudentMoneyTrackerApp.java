@@ -9,7 +9,6 @@ class Record {
         this.amount = amount;
     }
 
-    // Encapsulation: Getters/Setters
     public String getName() { 
         return name; 
     }
@@ -17,7 +16,7 @@ class Record {
         return amount; 
     }
     public void setName(String name) { 
-        this.name = name; 
+        this.name = name;
     }
     public void setAmount(double amount) { 
         this.amount = amount; 
@@ -30,7 +29,7 @@ class Expense extends Record {
     }
 }
 
-public class StudentMoneyTrackerApp{
+public class StudentMoneyTrackerApp {
 
     static Scanner sc = new Scanner(System.in);
     static Expense[] expenses = new Expense[50];
@@ -62,6 +61,7 @@ public class StudentMoneyTrackerApp{
             }
         }
     }
+
     static void addExpense() {
 
         if (count >= expenses.length) {
@@ -72,7 +72,6 @@ public class StudentMoneyTrackerApp{
         String name;
         double amount;
 
-        // NAME VALIDATION
         while (true) {
             System.out.print("Expense Name: ");
             name = sc.nextLine().trim();
@@ -84,7 +83,6 @@ public class StudentMoneyTrackerApp{
             else break;
         }
 
-        // AMOUNT VALIDATION
         while (true) {
             System.out.print("Amount: ");
             String input = sc.nextLine();
@@ -123,6 +121,7 @@ public class StudentMoneyTrackerApp{
         System.out.println("Total: PHP" + total);
     }
 
+    // UPDATED: With name + amount validation
     static void editExpense() {
 
         viewExpenses();
@@ -131,7 +130,7 @@ public class StudentMoneyTrackerApp{
         int index;
 
         while (true) {
-            System.out.print("Enter number to edit or press Enter if none: ");
+            System.out.print("Enter number to edit: ");
             try {
                 index = Integer.parseInt(sc.nextLine()) - 1;
 
@@ -146,23 +145,41 @@ public class StudentMoneyTrackerApp{
 
         Expense e = expenses[index];
 
-        // NEW NAME
-        System.out.print("New Name (" + e.getName() + "): ");
-        String nn = sc.nextLine().trim();
-        if (!nn.isEmpty() && nn.matches("[a-zA-Z ]+"))
-            e.setName(nn);
+        // NEW NAME VALIDATED
+        while (true) {
+            System.out.println("Press Enter if none");
+            System.out.print("New Name (" + e.getName() + "): ");
+            String nn = sc.nextLine().trim();
 
-        // NEW AMOUNT
-        System.out.print("New Amount (" + e.getAmount() + "): ");
-        String na = sc.nextLine();
+            if (nn.isEmpty()) break; // skip editing
 
-        try {
-            if (!na.isEmpty()) {
-                double amt = Double.parseDouble(na);
-                if (amt > 0) e.setAmount(amt);
+            if (!nn.matches("[a-zA-Z ]+")) {
+                System.out.println("Letters only.");
+            } else {
+                e.setName(nn);
+                break;
             }
-        } catch (Exception ex) {
-            System.out.println("Invalid amount.");
+        }
+
+        // NEW AMOUNT VALIDATED
+        while (true) {
+            System.out.print("New Amount (" + e.getAmount() + "): ");
+            String na = sc.nextLine().trim();
+
+            if (na.isEmpty()) break;
+
+            try {
+                double newAmt = Double.parseDouble(na);
+                if (newAmt > 0) {
+                    e.setAmount(newAmt);
+                    break;
+                } else {
+                    System.out.println("Amount must be greater than 0.");
+                }
+
+            } catch (Exception ex) {
+                System.out.println("Numbers only.");
+            }
         }
 
         System.out.println("Updated!");
@@ -189,7 +206,6 @@ public class StudentMoneyTrackerApp{
             }
         }
 
-        // SHIFT LEFT
         for (int i = index; i < count - 1; i++) {
             expenses[i] = expenses[i + 1];
         }
