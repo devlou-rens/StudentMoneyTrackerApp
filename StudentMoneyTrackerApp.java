@@ -32,7 +32,7 @@ class Expense extends Record {
 public class StudentMoneyTrackerApp {
 
     static Scanner sc = new Scanner(System.in);
-    static Expense[] expenses = new Expense[50];
+    static Expense[] expenses = new Expense[100]; //ini lang an maximum sin pag store sin mga expenses
     static int count = 0;
 
     public static void main(String[] args) {
@@ -121,7 +121,6 @@ public class StudentMoneyTrackerApp {
         System.out.println("Total: PHP" + total);
     }
 
-    // UPDATED: With name + amount validation
     static void editExpense() {
 
         viewExpenses();
@@ -144,10 +143,12 @@ public class StudentMoneyTrackerApp {
         }
 
         Expense e = expenses[index];
+        boolean nameChanged = false;
+        boolean amountChanged = false;
 
         // NEW NAME VALIDATED
         while (true) {
-            System.out.println("Press Enter if none");
+            System.out.println("\n== Press Enter to skip change. ==");
             System.out.print("New Name (" + e.getName() + "): ");
             String nn = sc.nextLine().trim();
 
@@ -157,6 +158,7 @@ public class StudentMoneyTrackerApp {
                 System.out.println("Letters only.");
             } else {
                 e.setName(nn);
+                nameChanged = true;
                 break;
             }
         }
@@ -172,6 +174,7 @@ public class StudentMoneyTrackerApp {
                 double newAmt = Double.parseDouble(na);
                 if (newAmt > 0) {
                     e.setAmount(newAmt);
+                    amountChanged = true;
                     break;
                 } else {
                     System.out.println("Amount must be greater than 0.");
@@ -182,7 +185,11 @@ public class StudentMoneyTrackerApp {
             }
         }
 
-        System.out.println("Updated!");
+        if (nameChanged || amountChanged) {
+            System.out.println("Updated!");
+        } else {
+            System.out.println("No changes made.");
+        }
     }
 
     static void deleteExpense() {
@@ -193,9 +200,18 @@ public class StudentMoneyTrackerApp {
         int index;
 
         while (true) {
+            System.out.println("\n== Press Enter to cancel deletion. ==");
             System.out.print("Enter number to delete: ");
+            String input = sc.nextLine().trim();
+            
+            // Allow user to cancel by pressing Enter
+            if (input.isEmpty()) {
+                System.out.println("Deletion cancelled.");
+                return;
+            }
+
             try {
-                index = Integer.parseInt(sc.nextLine()) - 1;
+                index = Integer.parseInt(input) - 1;
 
                 if (index < 0 || index >= count)
                     System.out.println("Invalid!");
