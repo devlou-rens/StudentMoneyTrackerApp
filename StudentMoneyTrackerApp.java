@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.Scanner; // need ini para maka ayo input sa user
 
 class Record {
     private String name;  
@@ -32,7 +32,7 @@ class Expense extends Record {
 public class StudentMoneyTrackerApp {
 
     static Scanner sc = new Scanner(System.in);
-    static Expense[] expenses = new Expense[100]; //ini lang an maximum sin pag store sin mga expenses
+    static Expense[] expenses = new Expense[100]; //ini an maximum sin pag store sin mga expenses
     static int count = 0;
 
     public static void main(String[] args) {
