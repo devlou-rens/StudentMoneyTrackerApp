@@ -13,8 +13,11 @@ Key Features
 7.	The program continues running and only stops when the user chooses Exit.
 
 C.	Command Interface Design
+
 Define the execution command and the key interaction points.
-EXECUTION	DESCRIPTION	EXAMPLE USAGE
+EXECUTION	DESCRIPTION	
+
+ EXAMPLE USAGE
 Running the Program	Use this step to start or run the Student Money Tracker App in the computer lab.	Open VS Code.
 Open the file StudentMoneyTrackerApp.java.
 Open the terminal.
@@ -34,4 +37,5 @@ User Interaction Flow	How the user interacts with the system by entering choices
 Output Display 
 Shows the results of the user’s selected option during the program.
 User chooses an option like '2' (View Expenses) or '3' (Edit Expense) and the program displays the result such as the list of expenses, the total amount, or the updated expense details.
+
 
