@@ -1,4 +1,4 @@
-import java.util.Scanner; // need ini para maka ayo input sa user
+import java.util.Scanner;
 
 class Record {
     private String name;  
