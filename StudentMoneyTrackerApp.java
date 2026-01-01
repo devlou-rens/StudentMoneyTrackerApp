@@ -1,10 +1,16 @@
+/*
+Lourens L. Gacias
+BSCS 2-1
+email: lourensgacias00@gmail.com
+github: devlou-rens
+*/
 import java.util.Scanner; // need ini para maka ayo input sa user
-
+ 
 class Record {
-    private String name;  
+    private String name;  //using private for encapsulation
     private double amount;
 
-    public Record(String name, double amount) {
+    public Record(String name, double amount) { // constructor 
         this.name = name;
         this.amount = amount;
     }
@@ -29,7 +35,7 @@ class Expense extends Record {
     }
 }
 
-public class StudentMoneyTrackerApp {
+public class StudentMoneyTrackerApp { //ini po an main class 
 
     static Scanner sc = new Scanner(System.in);
     static Expense[] expenses = new Expense[100]; //ini an maximum sin pag store sin mga expenses
@@ -38,7 +44,7 @@ public class StudentMoneyTrackerApp {
     public static void main(String[] args) {
 
         while (true) {
-            System.out.println("\n=== STUDENT MONEY TRACKER APP ===");
+            System.out.println("\n=== STUDENT MONEY TRACKER APP ==="); // menu 
             System.out.println("1. Add Expense");
             System.out.println("2. View Expenses");
             System.out.println("3. Edit Expense");
@@ -48,7 +54,7 @@ public class StudentMoneyTrackerApp {
 
             String choice = sc.nextLine();
 
-            switch (choice) {
+            switch (choice) { // switch and case for choices instead of if-elif-else
                 case "1": addExpense(); break;
                 case "2": viewExpenses(); break;
                 case "3": editExpense(); break;
@@ -62,10 +68,10 @@ public class StudentMoneyTrackerApp {
         }
     }
 
-    static void addExpense() {
+    static void addExpense() { // pag add sin expenses 
 
         if (count >= expenses.length) {
-            System.out.println("Storage full!");
+            System.out.println("Storage full!"); // mauwas ini kapag napuno na si Epenses[100]
             return;
         }
 
