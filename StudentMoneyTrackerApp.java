@@ -1,7 +1,7 @@
 /*
 Lourens L. Gacias  
 BSCS 2-1
-email: lourensgacias00@gmail.com  
+email: lourensgacias00@gmail.com   
 github: devlou-rens 
 */ 
 import java.util.Scanner; // need ini para maka ayo input sa user 
