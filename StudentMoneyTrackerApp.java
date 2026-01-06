@@ -7,7 +7,7 @@ github: devlou-rens
 import java.util.Scanner; // need ini para maka ayo input sa user 
  
 class Record {
-    private String name;  //using private for encapsulation
+    private String name;  //using private for encapsulation 
     private double amount;
 
     public Record(String name, double amount) { // constructor 
