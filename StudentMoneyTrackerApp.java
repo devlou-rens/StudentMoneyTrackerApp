@@ -4,7 +4,7 @@ BSCS 2-1
 email: lourensgacias00@gmail.com     
 github: devlou-rens          
 */             
-import java.util.Scanner; // need ini para maka ayo input sa user         
+import java.util.Scanner; // need ini para maka ayo input sa user          
         
 class Record {
     private String name;  //using private for encapsulation  
