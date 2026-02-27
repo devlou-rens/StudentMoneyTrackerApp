@@ -10,7 +10,7 @@ class Record {
     private String name;  //using private for encapsulation  
     private double amount;
 
-    public Record(String name, double amount) { 
+    public Record(String name, double amount) {  
         this.name = name;
         this.amount = amount;
     }
